@@ -26,12 +26,14 @@ export const PriceEstimationPageActions = {
       pricePerGram,
       weight,
     }),
-  calculateTotalPriceSuccess: (
-    totalPrice: number
-  ) =>
+  calculateTotalPriceSuccess: (totalPrice: number) =>
     createAction({
       type: PriceEstimationPageActionTypes.Calculate_TotalPrice_Success,
-      totalPrice
+      totalPrice,
+    }),
+  resetState: () =>
+    createAction({
+      type: PriceEstimationPageActionTypes.Reset_PriceEstimation_State,
     }),
 };
 

@@ -37,8 +37,17 @@ const mapDispatchToProps = (
       dispatch(PriceEstimationPageActions.load(userRno));
     },
     calculateTotalPrice: (pricePerGram: number, weight: number) => {
-        dispatch(PriceEstimationPageActions.calculateTotalPrice(userRno, pricePerGram, weight));
-      },
+      dispatch(
+        PriceEstimationPageActions.calculateTotalPrice(
+          userRno,
+          pricePerGram,
+          weight
+        )
+      );
+    },
+    resetPriceEstimationState: () => {
+      dispatch(PriceEstimationPageActions.resetState());
+    },
   };
   return methodProps;
 };
