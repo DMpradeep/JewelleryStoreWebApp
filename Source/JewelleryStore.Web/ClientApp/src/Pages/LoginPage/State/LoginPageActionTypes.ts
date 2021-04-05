@@ -1,4 +1,3 @@
-export enum LoginPageActionTypes 
-{
-    ValidateUserAndLogin = "LOGINPAGE.ValidateUserAndLogin",
+export enum LoginPageActionTypes {
+  ValidateUserAndLogin = "LOGINPAGE.ValidateUserAndLogin",
 }
