@@ -11,6 +11,7 @@ export interface IPriceEstimationPageStateToProps {
 export interface IPriceEstimationPageDispatchToProps {
   loadPriceEstimationPage: () => void;
   calculateTotalPrice: (pricePerGram: number, weight: number) => void;
+  resetPriceEstimationState: () => void;
 }
 
 export interface IPriceEstimationPageProps
@@ -37,6 +38,10 @@ export class PriceEstimationPage extends React.Component<
 
   public componentWillMount() {
     this.props.loadPriceEstimationPage();
+  }
+
+  public componentWillUnmount() {
+    this.props.resetPriceEstimationState();
   }
 
   public render(): JSX.Element {

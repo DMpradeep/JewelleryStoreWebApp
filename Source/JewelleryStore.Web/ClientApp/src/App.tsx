@@ -5,15 +5,22 @@ import { PriceEstimationPageContainer } from "./Pages/PriceEstimationPage/Contai
 import "./custom.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { history } from "./State/Store";
+import { ConnectedRouter } from "connected-react-router";
 
-export default () => (
+export const App = () => (
   <div>
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={LoginPageContainer} />
-        <Route path="/user/:userRno/estimate/price" component={PriceEstimationPageContainer} />
-      </Switch>
-    </BrowserRouter>
-    <ToastContainer pauseOnFocusLoss={false} />
+    <ConnectedRouter history={history}>
+      <div>
+        <Switch>
+          <Route exact path="/" component={LoginPageContainer} />
+          <Route
+            path="/user/:userRno/estimate/price"
+            component={PriceEstimationPageContainer}
+          />
+        </Switch>
+        <ToastContainer pauseOnFocusLoss={false} />
+      </div>
+    </ConnectedRouter>
   </div>
 );
