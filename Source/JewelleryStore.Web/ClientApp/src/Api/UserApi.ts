@@ -11,13 +11,13 @@ export class UserApi extends BaseApi {
       password: password,
     };
 
-    var relativeUrl = "api/User/validate";
+    var relativeUrl = "/api/User/validate";
 
     return this.callApi(relativeUrl, RequestMethod.POST, requestObject);
   };
 
   public getUser = (userRno: number): Promise<UserMessage> => {
-    var relativeUrl = "api/User/" + userRno;
+    var relativeUrl = "/api/User/" + userRno;
     return this.callApi(relativeUrl, RequestMethod.GET);
   };
 }

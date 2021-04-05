@@ -7,6 +7,7 @@ export interface ILoginPageStateToProps {}
 
 export interface ILoginPageDispatchToProps {
   validateUserAndLogin: (userName: string, password: string) => void;
+  loadClientConfig: ()=> void;
 }
 
 export interface ILoginPageProps
@@ -33,6 +34,10 @@ export class LoginPage extends React.Component<
       userNameHelperText: "",
       passwordHelperText: "",
     };
+  }
+
+  public componentWillMount() {
+    this.props.loadClientConfig();
   }
 
   public render(): JSX.Element {

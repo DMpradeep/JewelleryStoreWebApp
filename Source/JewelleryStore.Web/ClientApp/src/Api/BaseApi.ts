@@ -1,4 +1,16 @@
+import { store } from "../State/Store";
+
 export class BaseApi {
+    protected callLocalServer<T>(relativeUrl: string): Promise<T> {
+        const URL = `.${relativeUrl}`;
+
+        return fetch(URL, { method: RequestMethod.GET })
+            .then((response) =>response.json())
+            .catch((err) => {
+                throw err;
+            });
+    }
+
     protected callApi<T>(
         relativeUrl: string,
         requestMethod: RequestMethod,
@@ -35,7 +47,7 @@ export class BaseApi {
     }
 
     private getCompleteURL(relativePath: string): string {
-        const baseURL = "http://localhost:5009/";
+        const baseURL = store.getState().common.clientConfig.apiUrl;
         return `${baseURL}${relativePath}`;
     }
 }

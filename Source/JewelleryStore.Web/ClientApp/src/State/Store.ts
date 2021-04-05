@@ -8,7 +8,7 @@ import createSagaMiddleware from "redux-saga";
 export const sagaMiddleware = createSagaMiddleware();
 
 export const history = createBrowserHistory({
-  basename: "/app",
+  basename: "/",
   getUserConfirmation: (message, callback) => {
     confirmAlert({
       title: "Jewellery Store",

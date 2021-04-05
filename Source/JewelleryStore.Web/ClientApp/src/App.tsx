@@ -11,7 +11,7 @@ export default () => (
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={LoginPageContainer} />
-        <Route path="/app/user/:userRno/estimate/price" component={PriceEstimationPageContainer} />
+        <Route path="/user/:userRno/estimate/price" component={PriceEstimationPageContainer} />
       </Switch>
     </BrowserRouter>
     <ToastContainer pauseOnFocusLoss={false} />

@@ -8,6 +8,7 @@ import {
     LoginPage,
 } from "../Components/LoginPage";
 import { LoginPageActions } from "../State/LoginPageActions";
+import { CommonActions } from "../../../Common/State/CommonActions";
 
 const mapStateToProps = (state: IRootState): ILoginPageStateToProps => {
     const propertyProps: ILoginPageStateToProps = {
@@ -19,6 +20,9 @@ const mapDispatchToProps = (dispatch: Dispatch): ILoginPageDispatchToProps => {
     const methodProps: ILoginPageDispatchToProps = {
         validateUserAndLogin: (userName: string, password: string) => {
             dispatch(LoginPageActions.validateUserAndLogin(userName, password));
+        },
+        loadClientConfig: () => {
+            dispatch(CommonActions.fetchClientConfig());
         },
     };
     return methodProps;

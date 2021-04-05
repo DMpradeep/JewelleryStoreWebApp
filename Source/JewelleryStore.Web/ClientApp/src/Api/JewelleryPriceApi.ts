@@ -12,7 +12,7 @@ export class JewelleryPriceApi extends BaseApi {
       weight: weight,
     };
 
-    var relativeUrl = "api/" + userRno +"/JewelleryPrice/calculate";
+    var relativeUrl = "/api/" + userRno +"/JewelleryPrice/calculate";
 
     return this.callApi(relativeUrl, RequestMethod.POST, requestObject);
   };
