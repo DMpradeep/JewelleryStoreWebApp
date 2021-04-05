@@ -3,16 +3,9 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { isEmpty } from "lodash";
 
-export interface ILoginPageStateToProps {}
-
 export interface ILoginPageDispatchToProps {
   validateUserAndLogin: (userName: string, password: string) => void;
-  loadClientConfig: ()=> void;
 }
-
-export interface ILoginPageProps
-  extends ILoginPageStateToProps,
-    ILoginPageDispatchToProps {}
 
 export interface ILoginPageState {
   userName: string;
@@ -22,10 +15,10 @@ export interface ILoginPageState {
 }
 
 export class LoginPage extends React.Component<
-  ILoginPageProps,
+  ILoginPageDispatchToProps,
   ILoginPageState
 > {
-  constructor(props: ILoginPageProps) {
+  constructor(props: ILoginPageDispatchToProps) {
     super(props);
 
     this.state = {
@@ -34,10 +27,6 @@ export class LoginPage extends React.Component<
       userNameHelperText: "",
       passwordHelperText: "",
     };
-  }
-
-  public componentWillMount() {
-    this.props.loadClientConfig();
   }
 
   public render(): JSX.Element {
