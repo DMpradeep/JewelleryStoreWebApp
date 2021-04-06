@@ -14,19 +14,18 @@ const userApi = new UserApi();
 function* validateUserAndLoginEffect(
   action: ReturnType<typeof LoginPageActions.validateUserAndLogin>
 ) {
-  
   yield put(CommonActions.fetchClientConfig()); //temporary change
   yield take(CommonActionTypes.FETCH_CLIENT_CONFIG_SUCCESS);
-  
-  const userRno: ThenArg<
+
+  const result: ThenArg<
     typeof userApi.validateUser
   > = yield userApi.validateUser(action.userName, action.password);
 
-  if (userRno) {
+  if (result) {
+    yield put(LoginPageActions.setUserAccessToken(result));
     toast.success("Login success");
+    yield put(push("/user/estimate/price"));
   }
-  
-  yield put(push("/user/" + userRno + "/estimate/price"));
 }
 
 export function* LoginPageEffects() {

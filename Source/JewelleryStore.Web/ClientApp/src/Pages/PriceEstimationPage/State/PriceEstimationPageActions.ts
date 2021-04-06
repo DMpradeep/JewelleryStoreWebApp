@@ -5,10 +5,9 @@ import { UserMessage } from "../../../Models/UserMessage";
 const createAction = generateCreateAction<PriceEstimationPageActionTypes>();
 
 export const PriceEstimationPageActions = {
-  load: (userRno: number) =>
+  load: () =>
     createAction({
       type: PriceEstimationPageActionTypes.Load_PriceEstimation_Page,
-      userRno,
     }),
   loadSuccess: (userMessage: UserMessage) =>
     createAction({
@@ -16,13 +15,11 @@ export const PriceEstimationPageActions = {
       userMessage,
     }),
   calculateTotalPrice: (
-    userRno: number,
     pricePerGram: number,
     weight: number
   ) =>
     createAction({
       type: PriceEstimationPageActionTypes.Calculate_TotalPrice,
-      userRno,
       pricePerGram,
       weight,
     }),

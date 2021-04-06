@@ -15,7 +15,7 @@ export const App = () => (
         <Switch>
           <Route exact path="/" component={LoginPageContainer} />
           <Route
-            path="/user/:userRno/estimate/price"
+            path="/user/estimate/price"
             component={PriceEstimationPageContainer}
           />
         </Switch>

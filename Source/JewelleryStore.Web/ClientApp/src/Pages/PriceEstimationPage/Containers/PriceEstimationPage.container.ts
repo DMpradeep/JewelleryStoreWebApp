@@ -29,17 +29,13 @@ const mapDispatchToProps = (
   dispatch: Dispatch,
   ownProps: any
 ): IPriceEstimationPageDispatchToProps => {
-  const userRno: number =
-    (ownProps.userRno as number) || (ownProps.match.params.userRno as number);
-
   const methodProps: IPriceEstimationPageDispatchToProps = {
     loadPriceEstimationPage: () => {
-      dispatch(PriceEstimationPageActions.load(userRno));
+      dispatch(PriceEstimationPageActions.load());
     },
     calculateTotalPrice: (pricePerGram: number, weight: number) => {
       dispatch(
         PriceEstimationPageActions.calculateTotalPrice(
-          userRno,
           pricePerGram,
           weight
         )
