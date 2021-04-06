@@ -22,8 +22,6 @@ function* validateUserAndLoginEffect(
     typeof userApi.validateUser
   > = yield userApi.validateUser(action.userName, action.password);
 
-  console.log(userRno);
-
   if (userRno) {
     toast.success("Login success");
   }
