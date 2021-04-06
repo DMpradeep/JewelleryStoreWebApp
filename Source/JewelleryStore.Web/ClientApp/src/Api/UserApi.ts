@@ -1,17 +1,18 @@
 import { BaseApi, RequestMethod } from "./BaseApi";
 import { UserMessage } from "../Models/UserMessage";
+import { UserTokenMessage } from "../Models/UserTokenMessage";
 
 export class UserApi extends BaseApi {
   public validateUser = (
     userName: string,
     password: string
-  ): Promise<number> => {
+  ): Promise<UserTokenMessage> => {
     var requestObject = {
       id: userName,
       password: password,
     };
 
-    var relativeUrl = "/api/User/validate";
+    var relativeUrl = "/api/token";
 
     return this.callApi(relativeUrl, RequestMethod.POST, requestObject);
   };
