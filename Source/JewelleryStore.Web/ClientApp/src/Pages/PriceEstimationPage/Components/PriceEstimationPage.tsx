@@ -1,6 +1,16 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { renderToString } from 'react-dom/server';
+import {
+  Dialog,
+  DialogTitle,
+  List,
+  ListItem,
+  ListItemText,
+} from "@material-ui/core";
+import jsPDF from 'jspdf';
+import { toast } from "react-toastify";
 
 export interface IPriceEstimationPageStateToProps {
   userType: number;
@@ -17,10 +27,12 @@ export interface IPriceEstimationPageDispatchToProps {
 export interface IPriceEstimationPageProps
   extends IPriceEstimationPageStateToProps,
     IPriceEstimationPageDispatchToProps {}
-    
+
 export interface IPriceEstimationPageState {
-    pricePerGram: number;
-    weight: number;
+  pricePerGram: number;
+  weight: number;
+  openPrintToScreenDialog: boolean;
+  openPrintToFileDialog: boolean;
 }
 
 export class PriceEstimationPage extends React.Component<
@@ -31,9 +43,11 @@ export class PriceEstimationPage extends React.Component<
     super(props);
 
     this.state = {
-        pricePerGram: 0,
-        weight: 0
-    }
+      pricePerGram: 0,
+      weight: 0,
+      openPrintToScreenDialog: false,
+      openPrintToFileDialog: false,
+    };
   }
 
   public componentWillMount() {
@@ -112,6 +126,8 @@ export class PriceEstimationPage extends React.Component<
           variant="contained"
           color="primary"
           style={{
+            display: "block",
+            boxSizing: "border-box",
             width: "200px",
             height: "40px",
             marginTop: "20px",
@@ -121,8 +137,96 @@ export class PriceEstimationPage extends React.Component<
         >
           {"Calculate"}
         </Button>
+
+        <Button
+          variant="contained"
+          color="primary"
+          style={{
+            width: "200px",
+            height: "40px",
+            marginTop: "20px",
+            marginLeft: "20px",
+          }}
+          onClick={() => this.setState({ openPrintToScreenDialog: true })}
+        >
+          {"Print to screen"}
+        </Button>
+        {this.renderPrintToScreenDialog()}
+
+        <Button
+          variant="contained"
+          color="primary"
+          style={{
+            width: "200px",
+            height: "40px",
+            marginTop: "20px",
+            marginLeft: "20px",
+          }}
+          onClick={this.printToFile}
+        >
+          {"Print to file"}
+        </Button>
+
+        <Button
+          variant="contained"
+          color="primary"
+          style={{
+            width: "200px",
+            height: "40px",
+            marginTop: "20px",
+            marginLeft: "20px",
+          }}
+          onClick={() => {toast.error("Not implemented");}}
+        >
+          {"Print to paper"}
+        </Button>
       </div>
     );
+  }
+
+  private renderPrintToScreenDialog = (): JSX.Element => {
+    return (
+      <Dialog
+        onClose={() => this.setState({ openPrintToScreenDialog: false })}
+        aria-labelledby="simple-dialog-title"
+        open={this.state.openPrintToScreenDialog}
+      >
+        <DialogTitle id="simple-dialog-title">{"Print to screen"}</DialogTitle>
+        {this.consolidatedEstimationRender()}
+      </Dialog>
+    );
+  };
+
+  private consolidatedEstimationRender = () : JSX.Element => (
+    <div>
+      <List>
+        <ListItem>
+          <ListItemText primary={"Gold price"} secondary={"(per gram)"} />
+          <ListItemText primary={this.state.pricePerGram} />
+        </ListItem>
+        <ListItem>
+          <ListItemText primary={"Weight"} secondary={"(grams)"} />
+          <ListItemText primary={this.state.weight} />
+        </ListItem>
+        {this.props.userType == 1 && (
+          <ListItem>
+            <ListItemText primary={"Discount"} secondary={"(percentage)"} />
+            <ListItemText primary={this.props.discountPercentage} />
+          </ListItem>
+        )}
+        <ListItem>
+          <ListItemText primary={"Total price"} />
+          <ListItemText primary={this.props.totalPrice} />
+        </ListItem>
+      </List>
+    </div>
+  );
+
+  private printToFile = () => {
+    const string = renderToString(this.consolidatedEstimationRender());
+    const pdf = new jsPDF();
+    pdf.fromHTML(string, 0, 0);
+    pdf.save('Estimation')
   }
 
   private onCalculateClicked = () => {
@@ -133,7 +237,7 @@ export class PriceEstimationPage extends React.Component<
     ev: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     this.setState({
-      pricePerGram:  +ev.target.value,
+      pricePerGram: +ev.target.value,
     });
   };
 
@@ -141,7 +245,7 @@ export class PriceEstimationPage extends React.Component<
     ev: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     this.setState({
-        weight:  +ev.target.value,
+      weight: +ev.target.value,
     });
   };
 }
