@@ -12,18 +12,20 @@ export function handleApiError<T>(f: (action: T) => void) {
 
 function handleError(error: any) {
   console.error(error);
-  let errorMessage = "Unable to perform operation";
-
-  if (error.errorMessage) {
-    errorMessage = Array.isArray(error.errorMessage)
-      ? error.errorMessage[0]
-      : error.errorMessage;
-    if (error.errorDetails && error.errorDetails.length > 0) {
-      errorMessage += `\n ${error.errorDetails.map(
-        (err: { fieldMessage: any; }) => `\n- ${err.fieldMessage}`
-      )}`;
+  if (error.response && error.response.status === 401) {
+    toast.error("Unauthorized", { pauseOnHover: true });
+  } else {
+    let errorMessage = "Unable to perform operation";
+    if (error.errorMessage) {
+      errorMessage = Array.isArray(error.errorMessage)
+        ? error.errorMessage[0]
+        : error.errorMessage;
+      if (error.errorDetails && error.errorDetails.length > 0) {
+        errorMessage += `\n ${error.errorDetails.map(
+          (err: { fieldMessage: any }) => `\n- ${err.fieldMessage}`
+        )}`;
+      }
     }
+    toast.error(errorMessage, { pauseOnHover: true });
   }
-
-  toast.error(errorMessage, { pauseOnHover: true });
 }

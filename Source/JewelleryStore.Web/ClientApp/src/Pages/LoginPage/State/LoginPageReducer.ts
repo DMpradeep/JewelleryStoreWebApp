@@ -1,21 +1,21 @@
 import { TypeLoginPageActions } from "./LoginPageActions";
 import { LoginPageActionTypes } from "./LoginPageActionTypes";
-import { ILoginState } from "../Models/ILoginState";
+import { ILoginPageState } from "../Models/ILoginPageState";
 
-const initialState: ILoginState = {
+const initialState: ILoginPageState = {
   accessToken: "",
   userRno: 0,
 };
 
 export function LoginPageReducer(
-  state: ILoginState = initialState,
+  state: ILoginPageState = initialState,
   action: TypeLoginPageActions
-): ILoginState {
+): ILoginPageState {
   switch (action.type) {
     case LoginPageActionTypes.SetUserAccessToken: {
       return {
         ...state,
-        accessToken: action.tokenMessage.accessToken,
+        accessToken: action.tokenMessage.token,
         userRno: action.tokenMessage.userRno
       };
     }

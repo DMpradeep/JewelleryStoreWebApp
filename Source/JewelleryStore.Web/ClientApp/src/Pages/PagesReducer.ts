@@ -6,5 +6,5 @@ import { LoginPageReducer } from "./LoginPage/State/LoginPageReducer";
 
 export const PagesReducer = combineReducers<IPagesState>({
     priceEstimationPage: PriceEstimationPageReducer,
-    loginState: LoginPageReducer
+    loginPageState: LoginPageReducer
 });

@@ -53,7 +53,7 @@ export class BaseApi {
   }
 
   private getAccessToken = (): string =>
-    store.getState().pages.loginState.accessToken;
+    store.getState().pages.loginPageState.accessToken;
 
   private getCompleteURL(relativePath: string): string {
     const baseURL = store.getState().common.clientConfig.apiUrl;

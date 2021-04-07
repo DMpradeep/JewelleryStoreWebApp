@@ -1,4 +1,4 @@
 export interface UserTokenMessage {
-  accessToken: string;
+  token: string;
   userRno: number;
 }
