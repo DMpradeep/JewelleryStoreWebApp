@@ -1,7 +1,7 @@
-import { ILoginState } from "./LoginPage/Models/ILoginState";
+import { ILoginPageState } from "./LoginPage/Models/ILoginPageState";
 import { IPriceEstimationPageState } from "./PriceEstimationPage/Models/IPriceEstimationPageState";
 
 export interface IPagesState {
-  loginState: ILoginState;
+  loginPageState: ILoginPageState;
   priceEstimationPage: IPriceEstimationPageState;
 }

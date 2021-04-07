@@ -1,4 +1,4 @@
-export interface ILoginState {
+export interface ILoginPageState {
   accessToken: string;
   userRno: number;
 }

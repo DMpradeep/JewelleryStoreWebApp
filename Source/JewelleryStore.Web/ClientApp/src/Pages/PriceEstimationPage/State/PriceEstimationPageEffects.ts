@@ -1,4 +1,4 @@
-import { put, takeEvery } from "redux-saga/effects";
+import { put, take, takeEvery } from "redux-saga/effects";
 import { PriceEstimationPageActions } from "./PriceEstimationPageActions";
 import { PriceEstimationPageActionTypes } from "./PriceEstimationPageActionTypes";
 import { handleApiError } from "../../../Core/HandleApiErrorEffect";
@@ -6,6 +6,8 @@ import { ThenArg } from "../../../Core/TypeHelpers";
 import { UserApi } from "../../../Api/UserApi";
 import { JewelleryPriceApi } from "../../../Api/JewelleryPriceApi";
 import { store } from "../../../State/Store";
+import { CommonActions } from "../../../Common/State/CommonActions";
+import { CommonActionTypes } from "../../../Common/State/CommonActionTypes";
 
 const userApi = new UserApi();
 const jewelleryPriceApi = new JewelleryPriceApi();
@@ -13,7 +15,10 @@ const jewelleryPriceApi = new JewelleryPriceApi();
 function* loadPriceEstimationPageEffect(
   action: ReturnType<typeof PriceEstimationPageActions.load>
 ) {
-  const userRno = store.getState().pages.loginState.userRno;
+  yield put(CommonActions.fetchClientConfig());
+  yield take(CommonActionTypes.FETCH_CLIENT_CONFIG_SUCCESS);
+
+  const userRno = store.getState().pages.loginPageState.userRno;
   const userMessage: ThenArg<typeof userApi.getUser> = yield userApi.getUser(
     userRno
   );
