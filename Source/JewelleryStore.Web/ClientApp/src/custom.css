@@ -1,14 +1,100 @@
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+.common-css .MuiFormControl-root.MuiTextField-root {
+  display: block;
+  box-sizing: border-box;
+  margin: 2% 0% 2% 40%;
 }
 
-code {
-  color: #E01A76;
+.common-css .MuiButtonBase-root.MuiButton-root {
+  width: 11%;
+  display: block;
+  box-sizing: border-box;
+  margin: 2% 0% 2% 40%;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.common-css h5{
+  position: absolute;
+  top: 2%;
+  right: 2%;
+}
+
+.loading-spinner-wrap {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  -webkit-animation: fadein 1s;
+  -moz-animation: fadein 1s;
+  -ms-animation: fadein 1s;
+  -o-animation: fadein 1s;
+  animation: fadein 1s;
+}
+.loading-spinner-wrap .spinner {
+  border: 3px solid #d3d3d3;
+  border-left-color: #004670;
+  border-bottom-color: #004670;
+  border-radius: 50%;
+  box-sizing: border-box;
+  height: 60px;
+  width: 60px;
+  animation: spin 1s linear infinite;
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-ms-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(135deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

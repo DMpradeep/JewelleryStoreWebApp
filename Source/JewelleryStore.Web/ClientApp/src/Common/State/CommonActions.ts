@@ -6,17 +6,25 @@ const createAction = generateCreateAction<CommonActionTypes>();
 
 export const CommonActions = {
   fetchClientConfig: () =>
-  createAction({
+    createAction({
       type: CommonActionTypes.FETCH_CLIENT_CONFIG,
-  }),
+    }),
 
-fetchClientConfigSuccess: (clientConfig: IClientConfig) =>
-  createAction({
+  fetchClientConfigSuccess: (clientConfig: IClientConfig) =>
+    createAction({
       clientConfig,
       type: CommonActionTypes.FETCH_CLIENT_CONFIG_SUCCESS,
-  }),
+    }),
+
+  showLoadingSpinner: () =>
+    createAction({
+      type: CommonActionTypes.SHOW_LOADING_SPINNER,
+    }),
+
+  hideLoadingSpinner: () =>
+    createAction({
+      type: CommonActionTypes.HIDE_LOADING_SPINNER,
+    }),
 };
 
-export type TypeCommonActions = ActionUnion<
-  typeof CommonActions
->;
+export type TypeCommonActions = ActionUnion<typeof CommonActions>;

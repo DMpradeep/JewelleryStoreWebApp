@@ -60,7 +60,7 @@ export class PriceEstimationPage extends React.Component<
 
   public render(): JSX.Element {
     return (
-      <div>
+      <div className="common-css">
         <h5>
           Welcome:{" "}
           {this.props.userType === 0 ? "Normal User" : "Privileged User"}
@@ -70,24 +70,12 @@ export class PriceEstimationPage extends React.Component<
           label="Gold Price (per gram)"
           variant="outlined"
           type="number"
-          style={{
-            display: "block",
-            boxSizing: "border-box",
-            marginTop: "20px",
-            marginLeft: "20px",
-          }}
           onChange={this.setPricePerGram}
         />
         <TextField
           label="Weight (grams)"
           variant="outlined"
           type="number"
-          style={{
-            display: "block",
-            boxSizing: "border-box",
-            marginTop: "20px",
-            marginLeft: "20px",
-          }}
           onChange={this.setWeight}
         />
 
@@ -98,12 +86,6 @@ export class PriceEstimationPage extends React.Component<
             label="Discount %"
             variant="outlined"
             value={this.props.discountPercentage}
-            style={{
-              display: "block",
-              boxSizing: "border-box",
-              marginTop: "20px",
-              marginLeft: "20px",
-            }}
           />
         )}
 
@@ -114,25 +96,11 @@ export class PriceEstimationPage extends React.Component<
           variant="outlined"
           type="number"
           value={this.props.totalPrice}
-          style={{
-            display: "block",
-            boxSizing: "border-box",
-            marginTop: "20px",
-            marginLeft: "20px",
-          }}
         />
 
         <Button
           variant="contained"
           color="primary"
-          style={{
-            display: "block",
-            boxSizing: "border-box",
-            width: "200px",
-            height: "40px",
-            marginTop: "20px",
-            marginLeft: "20px",
-          }}
           onClick={this.onCalculateClicked}
         >
           {"Calculate"}
@@ -141,12 +109,6 @@ export class PriceEstimationPage extends React.Component<
         <Button
           variant="contained"
           color="primary"
-          style={{
-            width: "200px",
-            height: "40px",
-            marginTop: "20px",
-            marginLeft: "20px",
-          }}
           onClick={() => this.setState({ openPrintToScreenDialog: true })}
         >
           {"Print to screen"}
@@ -157,10 +119,6 @@ export class PriceEstimationPage extends React.Component<
           variant="contained"
           color="primary"
           style={{
-            width: "200px",
-            height: "40px",
-            marginTop: "20px",
-            marginLeft: "20px",
           }}
           onClick={this.printToFile}
         >
@@ -170,12 +128,6 @@ export class PriceEstimationPage extends React.Component<
         <Button
           variant="contained"
           color="primary"
-          style={{
-            width: "200px",
-            height: "40px",
-            marginTop: "20px",
-            marginLeft: "20px",
-          }}
           onClick={() => {toast.error("Not implemented");}}
         >
           {"Print to paper"}
