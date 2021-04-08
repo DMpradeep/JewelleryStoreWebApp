@@ -6,7 +6,7 @@ User credentials:
 2. Username - **ProUser** Password - **456** (Privileged user)  
 
 # Introduction 
-Jeweellery store WebApp.  
+Jewellery store WebApp.  
 Part of technical assigment - https://github.com/AUNewGen/jewelry-store-challenge-  
 
 WebApp on Asp.Net core.  
