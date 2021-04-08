@@ -5,18 +5,34 @@ import { ICommonState } from "./CommonState";
 
 const initialState: ICommonState = {
   clientConfig: {
-    apiUrl : "/"
-  }
+    apiUrl: "/",
+  },
+  isLoaderVisible: false,
 };
 
-export function CommonReducer(state: ICommonState = initialState, action: TypeCommonActions): ICommonState {
-    switch (action.type) {
-        case CommonActionTypes.FETCH_CLIENT_CONFIG_SUCCESS: {
-            return {
-                ...state,
-                clientConfig: action.clientConfig,
-            };
-        }
+export function CommonReducer(
+  state: ICommonState = initialState,
+  action: TypeCommonActions
+): ICommonState {
+  switch (action.type) {
+    case CommonActionTypes.FETCH_CLIENT_CONFIG_SUCCESS: {
+      return {
+        ...state,
+        clientConfig: action.clientConfig,
+      };
     }
-    return state;
+    case CommonActionTypes.SHOW_LOADING_SPINNER: {
+      return {
+        ...state,
+        isLoaderVisible: true,
+      };
+    }
+    case CommonActionTypes.HIDE_LOADING_SPINNER: {
+      return {
+        ...state,
+        isLoaderVisible: false,
+      };
+    }
+  }
+  return state;
 }

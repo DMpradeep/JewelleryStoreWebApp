@@ -31,18 +31,12 @@ export class LoginPage extends React.Component<
 
   public render(): JSX.Element {
     return (
-      <div>
+      <div className="common-css">
         <TextField
           required
           id="standard-required"
           label="User Name"
           variant="outlined"
-          style={{
-            display: "block",
-            boxSizing: "border-box",
-            marginTop: "20px",
-            marginLeft: "20px",
-          }}
           helperText={this.state.userNameHelperText}
           onChange={this.setUserName}
         />
@@ -53,12 +47,6 @@ export class LoginPage extends React.Component<
           label="Password"
           variant="outlined"
           type="password"
-          style={{
-            display: "block",
-            boxSizing: "border-box",
-            marginTop: "20px",
-            marginLeft: "20px",
-          }}
           helperText={this.state.passwordHelperText}
           onChange={this.setPassword}
         />
@@ -66,12 +54,6 @@ export class LoginPage extends React.Component<
         <Button
           variant="contained"
           color="primary"
-          style={{
-            width: "200px",
-            height: "40px",
-            marginTop: "20px",
-            marginLeft: "20px",
-          }}
           onClick={this.onLoginClicked}
           disabled={this.disableLoginButton()}
         >

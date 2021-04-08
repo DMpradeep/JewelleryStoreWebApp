@@ -1,11 +1,17 @@
 import { toast } from "react-toastify";
+import { put } from "redux-saga/effects";
+import { CommonActions } from "../Common/State/CommonActions";
 
 export function handleApiError<T>(f: (action: T) => void) {
   return function* (a: T) {
+    yield put(CommonActions.showLoadingSpinner());
+
     try {
       yield f(a);
     } catch (error) {
       handleError(error);
+    } finally {
+      yield put(CommonActions.hideLoadingSpinner());
     }
   };
 }

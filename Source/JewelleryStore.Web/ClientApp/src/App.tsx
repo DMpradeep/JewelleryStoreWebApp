@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { history } from "./State/Store";
 import { ConnectedRouter } from "connected-react-router";
+import { LoadingSpinnerContainer } from "./Common/Components/LoadingSpinner.container";
 
 export const App = () => (
   <div>
@@ -19,6 +20,7 @@ export const App = () => (
             component={PriceEstimationPageContainer}
           />
         </Switch>
+        <LoadingSpinnerContainer isVisible={false} />
         <ToastContainer pauseOnFocusLoss={false} />
       </div>
     </ConnectedRouter>
