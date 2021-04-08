@@ -1,20 +1,40 @@
+# Links
+WebApp is deployed as "Azure App Service"  
+**Swagger Url** - https://jewellerystoreweb.azurewebsites.net/  
+User credentials:  
+1. Username - **User**  Password - **123**  (Normal user)  
+2. Username - **ProUser** Password - **456** (Privileged user)  
+
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+Jeweellery store WebApp.  
+Part of technical assigment - https://github.com/AUNewGen/jewelry-store-challenge-  
+
+WebApp on Asp.Net core.  
+.Net version - 5.0  
 
 # Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+1. Download solution  
+2. Run npm install on ClienApp folder   
+![image](https://user-images.githubusercontent.com/25026068/113978106-25e5d100-9861-11eb-9a31-42e143bce192.png)  
+3. Dotnet run  
+![image](https://user-images.githubusercontent.com/25026068/113978186-4150dc00-9861-11eb-8685-44ce51c067a8.png)
+
+
+Default site url - http://localhost:5010 . Configurable in LaunchSettings.json file  
 
 # Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+Build: Make user to have .net 5 sdk installed.    
+Language - **Typescript**  
+Js Framework - **React**  
+State Management - **Redux**  
+Middleware - **Redux-Saga**  
+UI components - **Material UI**  
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+# Deployement
+1. CI : Configured corresponding Azure Devops pipeline.   
+Link - https://dmpradeep.visualstudio.com/JewelleryStore/_build?definitionId=3   
+2. CD : Configured corresponding Azure Devops release to deploy the api to "Azure App Service".   
+Link - https://dmpradeep.visualstudio.com/JewelleryStore/_release?_a=releases&view=mine&definitionId=2    
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+# @Todo  
+1. UI tests (I have no prior experience. Planning to use ReactTestingLibrary. Will learn and complete it by April 10th 2021)
